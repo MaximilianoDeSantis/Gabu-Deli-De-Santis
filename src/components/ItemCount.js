@@ -1,37 +1,53 @@
-import React, {useState} from 'react'
+import React, { useState } from "react";
 
+const ItemCount = ({ stock, start, onAdd }) => {
+  const [count, setCount] = useState(start);
+  const aumentar = () => {
+    count < stock ? setCount(count + 1) : setCount(count);
+  };
 
+  const disminuir = () => {
+    setCount((ant) => (ant > 1 ? count - 1 : count));
+  };
 
-
-
-export default function ItemCount({stock,start,onAdd}) {
-    const [count, setCount] = useState(start);
-    const aumentar = () => {
-        (count < stock)? setCount(count+1) : setCount(count)
-    }
-
-    const disminuir = () => {
-        setCount((ant) => (ant > 0 ? count - 1 :  count))
-    }
-
-    const checkStock = () => {
-        // Faltaria ir actualizando el count mediante se van agregando al carro productos
-         (count > stock)? alert('No hay stock suficiente') : onAdd(count)
-    }
-
-
+  const checkStock = () => {
+    // Faltaria ir actualizando el count mediante se van agregando al carro productos
+    count > stock ? alert("No hay stock suficiente") : onAdd(count);
+  };
 
   return (
-    <>
-        <div className='d-flex justify-content-center my-5'>
-            <button type="button" onClick={disminuir} className="btn btn-outline-secondary" id="input-group-button-left">-</button> 
-            <div className='fs-5 mx-3'> {count} </div>
-            <button type="button" onClick={aumentar} className="btn btn-outline-secondary " id="input-group-button-left">+</button>
+    <div class="card m-3">
+      <h1> Item Count </h1>
+      <div class="card-body ">
+        <div className="d-flex justify-content-center my-5 gap-3">
+          <button
+            type="button"
+            onClick={disminuir}
+            className="btn btn-outline-secondary"
+            id="input-group-button-left"
+          >
+            -
+          </button>
+          <div className="fs-5 mx-3"> {count} </div>
+          <button
+            type="button"
+            onClick={aumentar}
+            className="btn btn-outline-secondary "
+            id="input-group-button-left"
+          >
+            +
+          </button>
+          <button
+            type="button"
+            className="btn btn-primary"
+            onClick={checkStock}
+          >
+            Agregar
+          </button>
         </div>
+      </div>
+    </div>
+  );
+};
 
-        <button type="button" className="btn btn-primary" onClick={checkStock}>Agregar al carro</button>
-    </>
-
-    
-  )
-}
+export default ItemCount;

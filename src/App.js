@@ -1,6 +1,5 @@
 import NavBar from './components/NavBar';
 import ItemListContainer from './components/ItemListContainer';
-
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
@@ -14,3 +13,17 @@ function App() {
 }
 
 export default App;
+
+/*
+
+
+
+const App = () => {
+  return (
+    <div>App</div>
+  )
+}
+
+export default App
+
+*/
