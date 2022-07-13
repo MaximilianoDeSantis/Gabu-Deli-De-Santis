@@ -16,9 +16,9 @@ const ItemCount = ({ stock, start, onAdd }) => {
   };
 
   return (
-    <div class="card m-3">
+    <div className="card m-3">
       <h1> Item Count </h1>
-      <div class="card-body ">
+      <div className="card-body ">
         <div className="d-flex justify-content-center my-5 gap-3">
           <button
             type="button"
