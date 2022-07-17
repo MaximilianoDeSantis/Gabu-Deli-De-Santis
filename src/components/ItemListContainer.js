@@ -3,7 +3,6 @@ import ItemCount from "./ItemCount";
 import ItemList from "./ItemList";
 import Loader from "./Loader";
 import ItemDetailContainer from "./ItemDetailContainer";
-
 import products from "../products.json";
 
 const ItemListContainer = ({ greetings }) => {
@@ -29,7 +28,7 @@ const ItemListContainer = ({ greetings }) => {
       <div>{greetings}</div>
       <ItemCount stock={10} start={1} onAdd={addToCart} />
       {loading ? <Loader /> : <ItemList products={products} />}
-      <ItemDetailContainer />
+
       {/* <ItemList products={products} /> */}
       {/* <Loader /> */}
     </>
