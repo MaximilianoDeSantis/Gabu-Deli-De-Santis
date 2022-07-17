@@ -1,4 +1,5 @@
 import getItem from "./ItemDetailContainer";
+import {Link} from "react-router-dom";
 
 const Item = (el) => {
   return (
@@ -7,21 +8,11 @@ const Item = (el) => {
       <div className="card-body">
         <h5 className="card-title">{el.title}</h5>
         <p className="text-muted">$ {el.price}</p>
-        <button
-          type="button"
-          className="btn btn-secondary"
-          onClick={() => {
-            getItem(el);
-          }}
-        >
-          Detalles
-        </button>
 
-        {/* <div className="d-flex justify-content-center gap-1">
-          { <button type="button" className="btn btn-primary">
-            Comprar
-          </button> }
-        </div> */}
+        <Link to={`/producto/${el.id}`}> 
+          <button type="button" className="btn btn-secondary">Detalles</button>
+        </Link>
+        
       </div>
     </div>
   );

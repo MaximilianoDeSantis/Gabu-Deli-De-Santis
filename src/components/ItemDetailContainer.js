@@ -1,15 +1,39 @@
 import ItemDetail from "./ItemDetail";
-import { useState } from "react";
+import {useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import Loader from "./Loader";
 
 import products from "../products.json";
 
-const ItemDetailContainer = ({item}) => {
+const ItemDetailContainer = () => {
   // const [itemSelected, newItemSelected] = useState();
   // const getItem = (item) => {
   //   newItemSelected(item);
   // };
 
-  return <ItemDetail item={products[0]} />;
+  let {itemSelected} = useParams();
+
+  const item = products.filter(el => el.id == itemSelected)
+
+
+
+
+  // Loading Mock 1seg para mostrar detalles del producto seleccionado
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+  }, []);
+
+
+
+
+  return (
+    <>
+
+      {loading ? <Loader /> : <ItemDetail item={item} />}
+    </>);
 };
 
 export default ItemDetailContainer;
