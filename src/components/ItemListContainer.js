@@ -2,14 +2,22 @@ import { useState, useEffect } from "react";
 import ItemCount from "./ItemCount";
 import ItemList from "./ItemList";
 import Loader from "./Loader";
-import ItemDetailContainer from "./ItemDetailContainer";
+import {useParams} from "react-router-dom";
 import products from "../products.json";
 
 const ItemListContainer = ({ greetings }) => {
 
-  //LOADER
+  /** Control de filtro para mostrar productos */
+  let productsToShown;
+  let {category} = useParams()
+  category 
+    ? productsToShown = products.filter(el => el.category === category)
+    : productsToShown = products;
+
+
+  /** Control del loader */
   const [loading, setLoading] = useState(true);
-  // Async Mock
+  /** Control tiempo de carga de productos */
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
@@ -21,8 +29,7 @@ const ItemListContainer = ({ greetings }) => {
   return (
     <>
       <div>{greetings}</div>
-      {/* <ItemCount stock={10} start={1} onAdd={addToCart} />  Cancelado el mostrar el count del primer proyecto.  */}
-      {loading ? <Loader /> : <ItemList products={products} />}
+      {loading ? <Loader /> : <ItemList products={productsToShown} />}
 
     </>
   );

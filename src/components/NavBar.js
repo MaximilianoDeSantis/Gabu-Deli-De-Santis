@@ -9,7 +9,11 @@ const NavBar = () => {
       <NavLink to="/">
         <img src={logo} alt="Logo Gabu Deli" />
       </NavLink>
-      <h1 className="align-self-center">Gabu Deli</h1>
+      <Link to='/category/electronics' >Electronica</Link>
+      <Link to='/category/jewelery' >Joyeria</Link>
+      <Link to="/category/men's clothing" >Ropa de Hombre</Link>
+      <Link to="/category/women's clothing" >Ropa de Mujer</Link>
+      {/* <h1 className="align-self-center">Gabu Deli</h1> */}
       <CartWidget />
     </header>
   );

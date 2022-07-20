@@ -14,10 +14,10 @@ const ItemDetail = ({item}) => {
   const cart = []
 
   const addToCart = (count) => {
-    console.log(count)
+
     setBtnCart(true);
     cart.push({...item,cantidad: count})
-    console.log(cart)
+
   };
 
 
