@@ -7,14 +7,20 @@ const ItemDetail = ({item}) => {
 
   const {title,image,description,price} = item[0];
 
+  const [btnCart, setBtnCart] = useState(false)
 
-
+  // Intente armarlo con un useState pero no podia hacerlo guardarme los datos, siempre que mostraba por consola me lo mostraba vacio,
+  // igualmente esto imagino que deberia pasarlo a un context para que lo mantenga global
+  const cart = []
 
   const addToCart = (count) => {
-    //Momentaneamente controlado con alerts
-    // La Funcion la agregue aca porque en el PDF dice de pasar una funcion por parametros, pero no se si seria mejor todo el control este dejarlo en el archivo ItemCount
-    alert(`Se ingresaron ${count} articulos`);
+    console.log(count)
+    setBtnCart(true);
+    cart.push({...item,cantidad: count})
+    console.log(cart)
   };
+
+
     return (
  
       <div className="card">
@@ -31,8 +37,10 @@ const ItemDetail = ({item}) => {
               <h5 className="card-title">{title}</h5>
               <p className="card-text">{description}</p>
               <p className="card-text">$ {price}</p>
-              <ItemCount stock={10} start={1} onAdd={addToCart} />
-
+              {!btnCart
+              ? <ItemCount stock={10} start={1} onAdd={addToCart} />
+              : <Link to= "/cart" > <button type="button" className="btn btn-secondary ">Ir al carrito</button> </Link> 
+              }
               <Link to= "/" > <button type="button" className="btn btn-secondary ">Volver</button> </Link>
               
             </div>
