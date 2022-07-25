@@ -1,6 +1,9 @@
 import ItemCount from './ItemCount';
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link, NavLink} from "react-router-dom";
+import CartContext from '../context/CartContext';
+
+
 
 
 const ItemDetail = ({item}) => {
@@ -8,16 +11,16 @@ const ItemDetail = ({item}) => {
   const {title,image,description,price} = item[0];
 
   const [btnCart, setBtnCart] = useState(false)
+  const {addItem} = useContext(CartContext)
 
-  // Intente armarlo con un useState pero no podia hacerlo guardarme los datos, siempre que mostraba por consola me lo mostraba vacio,
-  // igualmente esto imagino que deberia pasarlo a un context para que lo mantenga global
-  const cart = []
 
+
+
+  // Enviar item y la cantidad a cartContext
   const addToCart = (count) => {
-
     setBtnCart(true);
-    cart.push({...item,cantidad: count})
-
+    addItem({...item[0], cantidad: count});
+  
   };
 
 

@@ -12,7 +12,6 @@ const ItemDetailContainer = () => {
   // };
 
   let {itemSelected} = useParams();
-  console.log(itemSelected)
 
   const item = products.filter(el => el.id == itemSelected)
 

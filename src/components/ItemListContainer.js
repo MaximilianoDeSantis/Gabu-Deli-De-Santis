@@ -6,6 +6,7 @@ import {useParams} from "react-router-dom";
 import products from "../products.json";
 
 const ItemListContainer = ({ greetings }) => {
+  
 
   /** Control de filtro para mostrar productos */
   let productsToShown;

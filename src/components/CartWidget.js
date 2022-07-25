@@ -1,9 +1,18 @@
 import CartImg from "../assets/svg/cart.svg";
-import { useState } from "react";
+import { useState, useEffect, useContext } from "react";
 import {Link, NavLink} from "react-router-dom";
+import CartContext from '../context/CartContext';
 
 const CartWidget = () => {
-  const [cartCount, setCartCount] = useState(0);
+  
+  const {itemsCount} = useContext(CartContext)
+  const [cartCount, setCartCount] = useState(itemsCount());
+  
+  // Modificar contador del cart
+  useEffect(() => {
+    setCartCount(itemsCount)
+  }, [itemsCount]);
+
 
   return (
     <Link to='Cart'>
