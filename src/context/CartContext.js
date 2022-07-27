@@ -7,8 +7,15 @@ const CartProvider = ({children}) => {
 
     const [cartItems, setCartItems] = useState([]);
 
+
+    const totalPrice = () => {
+        const price = cartItems.map(item => item.cantidad * item.price ).reduce((prev,curr) => prev + curr, 0)
+        return price.toFixed(2);
+    }
+
     const itemsCount = () => {
-       return cartItems.length;
+        const totalItems = cartItems.map(item => item.cantidad).reduce((prev,curr) => prev + curr, 0)
+        return totalItems;
     }
 
 
@@ -46,7 +53,8 @@ const CartProvider = ({children}) => {
 
 
      const deleteItem = (id) => {
-        
+        const newCart = cartItems.filter(el => el.id !== id)
+        setCartItems(newCart)
     };
 
     const clearAll = () => {
@@ -60,6 +68,7 @@ const CartProvider = ({children}) => {
         isInCart,
         deleteItem,
         itemsCount,
+        totalPrice,
         clearAll
     }
 
