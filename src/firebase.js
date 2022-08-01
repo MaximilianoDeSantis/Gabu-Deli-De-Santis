@@ -1,7 +1,5 @@
 import { initializeApp } from "firebase/app";
-import firebase from 'firebase/app' // asd
-import 'firebase/app' //asd
-import {getFirestore, doc, getDoc} from 'firebase/firestore';
+import { getFirestore, collection, getDocs, query, where} from 'firebase/firestore';
 
 
 
@@ -18,8 +16,23 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-// const db = getFirestore(app) // Obtiene la base de datos creada
+ const db = getFirestore(app) // Obtiene la base de datos creada
 
 
-export default firebase.firestore()
 
+
+export const fetchItemsByCategory = async (category) => {
+  const itemCollection = collection(db, "items");
+  const q = query(itemCollection, where("category", "==", category));
+  console.log(q)
+  return await getDocs(q);
+
+}
+
+export const getProducts = async () => {
+  const itemCollection = collection(db, "items");
+
+  const q = query(itemCollection);
+
+  return await getDocs(q);
+};

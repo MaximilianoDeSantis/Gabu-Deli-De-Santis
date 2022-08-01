@@ -3,6 +3,7 @@ import ItemCount from "./ItemCount";
 import ItemList from "./ItemList";
 import Loader from "./Loader";
 import {useParams} from "react-router-dom";
+import {fetchItemsByCategory, getProducts} from "../firebase";
 import products from "../products.json";
 
 const ItemListContainer = ({ greetings }) => {
@@ -11,9 +12,13 @@ const ItemListContainer = ({ greetings }) => {
   /** Control de filtro para mostrar productos */
   let productsToShown;
   let {category} = useParams()
+
+  //productsToShown = fetchItemsByCategory(category)
+
   category 
     ? productsToShown = products.filter(el => el.category === category)
-    : productsToShown = products;
+    : productsToShown = getProducts()
+    // : productsToShown = products;
 
 
   /** Control del loader */
