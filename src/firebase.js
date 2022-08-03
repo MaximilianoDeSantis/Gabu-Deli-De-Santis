@@ -1,5 +1,15 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, getDocs, query, where} from 'firebase/firestore';
+import products from './products.json'
+import {
+  collection,
+  addDoc,
+  getDocs,
+  doc,
+  getDoc,
+  getFirestore,
+  query,
+  where,
+} from 'firebase/firestore';
 
 
 
@@ -13,26 +23,68 @@ const firebaseConfig = {
   appId: "1:126107637041:web:34345c2eec649d530bcc10"
 };
 
+export const setInfo = () => {
+  // addDoc(collection(db,'items'),{
+  //   title: "Testing",
+  //   category: "Testing",
+  //   description: "Testing",
+  //   image: "Testing",
+  //   price: 2323
+  // }).then(console.log("hola")).catch(err => {console.log(err)})
+ 
+  products.forEach(product =>{
+    
+    addDoc(collection(db,'items'),{
+      id: product.id,
+      title: product.title,
+      category: product.category,
+      description: product.description,
+      image: product.image,
+      price: product.price
+    })
+
+    
+
+
+  })
+
+}
+
+
+
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
  const db = getFirestore(app) // Obtiene la base de datos creada
 
 
-
-
-export const fetchItemsByCategory = async (category) => {
-  const itemCollection = collection(db, "items");
-  const q = query(itemCollection, where("category", "==", category));
-  console.log(q)
-  return await getDocs(q);
-
-}
-
-export const getProducts = async () => {
-  const itemCollection = collection(db, "items");
-
-  const q = query(itemCollection);
-
-  return await getDocs(q);
+ export const getDetailItem = (id) => {
+  const docRef = doc(db, 'items', id); //referencia a el document
+  return getDoc(docRef);
 };
+
+
+
+export const getItems = () => {
+    const colRef = collection(db, 'items'); // referencia a la collection
+    const q = query(colRef);
+    return getDocs(q);
+  };
+
+
+
+export const getItemsFiltered = (category) => {
+    console.log("CATEGORIA")
+    console.log(category)
+    const colRef = query(collection(db, 'items')) // referencia a la collection
+    const q = query(colRef, where("category", "==", category));
+    return getDocs(q);
+  };
+
+/**   
+
+ LLENAR LA BASE DE DATOS
+  setInfo()
+  
+
+*/
