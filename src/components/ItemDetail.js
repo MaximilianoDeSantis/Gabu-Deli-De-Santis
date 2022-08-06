@@ -8,7 +8,11 @@ import CartContext from '../context/CartContext';
 
 const ItemDetail = ({item}) => {
 
-  const {title,image,description,price} = item[0];
+  console.log('ItemDetail')
+  console.log(item)
+
+  // const {title,image,description,price} = item[0];
+  // const {title,image,description,price} = item;
 
   const [btnCart, setBtnCart] = useState(false)
   const {addItem} = useContext(CartContext)
@@ -19,7 +23,8 @@ const ItemDetail = ({item}) => {
   // Enviar item y la cantidad a cartContext
   const addToCart = (count) => {
     setBtnCart(true);
-    addItem({...item[0], cantidad: count});
+    //addItem({...item[0], cantidad: count});
+    addItem({...item, cantidad: count});
   
   };
 
@@ -30,16 +35,16 @@ const ItemDetail = ({item}) => {
         <div className="row g-0">
           <div className="col-5 col-sm-4">
             <img
-              src={image}
+              src={item.image}
               className="img-fluid w-100"
               alt="card-horizontal"
             />
           </div>
           <div className="col-7 col-sm-8">
             <div className="card-body">
-              <h5 className="card-title">{title}</h5>
-              <p className="card-text">{description}</p>
-              <p className="card-text">$ {price}</p>
+              <h5 className="card-title">{item.title}</h5>
+              <p className="card-text">{item.description}</p>
+              <p className="card-text">$ {item.price}</p>
               {!btnCart
               ? <ItemCount stock={10} start={1} onAdd={addToCart} />
               : <Link to= "/cart" > <button type="button" className="btn btn-secondary ">Ir al carrito</button> </Link> 

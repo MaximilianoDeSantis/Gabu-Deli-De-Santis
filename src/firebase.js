@@ -59,8 +59,10 @@ const app = initializeApp(firebaseConfig);
 
 
  export const getDetailItem = (id) => {
+  // id = '9WIMYqF8OU462FpSXeNE'
   const docRef = doc(db, 'items', id); //referencia a el document
   return getDoc(docRef);
+
 };
 
 
@@ -74,8 +76,6 @@ export const getItems = () => {
 
 
 export const getItemsFiltered = (category) => {
-    console.log("CATEGORIA")
-    console.log(category)
     const colRef = query(collection(db, 'items')) // referencia a la collection
     const q = query(colRef, where("category", "==", category));
     return getDocs(q);

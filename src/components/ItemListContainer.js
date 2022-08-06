@@ -8,12 +8,13 @@ import {getItems,getItemsFiltered} from "../firebase";
 const ItemListContainer = () => {
 
   
-  let {nombreCategoria} = useParams()
+  let {category} = useParams()
+
   const [loading, setLoading] = useState(true);
   const [products, setProducts] = useState([]);
   
-  useEffect(() => {
-  (nombreCategoria === undefined ? (getItems()) : getItemsFiltered(nombreCategoria)).then((snapshot) => {
+  useEffect(() => {    
+  (category === undefined ? (getItems()) : getItemsFiltered(category)).then((snapshot) => {
       setProducts(
         snapshot.docs.map((document) => ({
           ...document.data(),
@@ -21,9 +22,7 @@ const ItemListContainer = () => {
       );
       setTimeout(setLoading,2000,false);
     });
-  }, [nombreCategoria]);
-
-  
+  }, [category]);
 
   return (
     <>
