@@ -42,12 +42,7 @@ export const setInfo = () => {
       image: product.image,
       price: product.price
     })
-
-    
-
-
   })
-
 }
 
 
@@ -80,6 +75,33 @@ export const getItemsFiltered = (category) => {
     const q = query(colRef, where("category", "==", category));
     return getDocs(q);
   };
+
+
+
+export const setBuy = (cart) => {
+
+
+  // Crea objeto para guardar Datos Cliente e Items comprados
+  const items = {}
+  items.clientData = {name: 'Nombre Cliente',
+                      lastName: 'Apellido',
+                      email: 'nombre@gmail.com',
+                      address: 'address1',
+                      }
+  items.cart = cart.map(item => item)
+
+
+
+  addDoc(collection(db, 'DataBuyer'),{
+    items
+  })
+
+  alert('Compra Exitosa')
+
+
+}
+
+  
 
 /**   
 

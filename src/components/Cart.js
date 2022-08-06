@@ -2,11 +2,17 @@ import { useContext } from "react";
 import { Link } from 'react-router-dom';
 import CartContext from '../context/CartContext';
 import CartItem from './CartItem';
+import {setBuy} from '../firebase'
 
 
 
 const Cart = () => {
     const {cartItems, clearAll, itemsCount, totalPrice } = useContext(CartContext)
+
+    const comprar = () => {
+       setBuy(cartItems)
+       clearAll()
+    }
 
 
     return (
@@ -23,6 +29,7 @@ const Cart = () => {
                         ))}
                     </div>
                     <button type="button" className="btn btn-secondary" onClick={clearAll}>Borrar todo</button>
+                    <button type="button" className="btn btn-primary" onClick={comprar}>Comprar</button>
                 </>
             }
 

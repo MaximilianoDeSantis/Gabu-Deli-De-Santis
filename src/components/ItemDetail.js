@@ -8,8 +8,6 @@ import CartContext from '../context/CartContext';
 
 const ItemDetail = ({item}) => {
 
-  console.log('ItemDetail')
-  console.log(item)
 
   // const {title,image,description,price} = item[0];
   // const {title,image,description,price} = item;

@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import {getDetailItem} from '../firebase'
 import Loader from "./Loader";
 
-import products from "../products.json";
 
 const ItemDetailContainer = () => {
 

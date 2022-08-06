@@ -32,20 +32,12 @@ const CartProvider = ({children}) => {
        
         if (!check) {
             setCartItems([...cartItems, item])
-            alert("Nuevo Item agregado al Carrito - ver por consola")
-            console.log("CART:")
-            console.log(cartItems) // ERROR - No muestra correctamente el contenido del array al primer item agregado
         } 
         else {
-            console.log("encontro un item con el mismo ID")
             const i = cartItems.findIndex( index => index.id === item.id)
             const newCart = cartItems
             newCart[i].cantidad = newCart[i].cantidad + item.cantidad;
             setCartItems(newCart);
-
-            alert("Item modificado del Carrito - ver por consola")
-            console.log("CART:")
-            console.log(cartItems)
         }
 
      }
