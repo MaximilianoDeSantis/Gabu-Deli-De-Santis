@@ -9,10 +9,10 @@ import {setBuy} from '../firebase'
 const Cart = () => {
     const {cartItems, clearAll, itemsCount, totalPrice } = useContext(CartContext)
 
-    const comprar = () => {
-       setBuy(cartItems)
-       clearAll()
-    }
+    // const comprar = () => {
+    //    setBuy(cartItems)
+    //    clearAll()
+    // }
 
 
     return (
@@ -29,7 +29,9 @@ const Cart = () => {
                         ))}
                     </div>
                     <button type="button" className="btn btn-secondary" onClick={clearAll}>Borrar todo</button>
-                    <button type="button" className="btn btn-primary" onClick={comprar}>Comprar</button>
+                    <Link to="../Checkout" >
+                        <button   button type="button" className="btn btn-primary" >Comprar</button>
+                    </Link>
                 </>
             }
 

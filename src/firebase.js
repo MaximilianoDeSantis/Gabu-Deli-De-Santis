@@ -78,25 +78,29 @@ export const getItemsFiltered = (category) => {
 
 
 
-export const setBuy = (cart) => {
-
+export const setBuy = (order) => {
+      console.log(order)
+      addDoc(collection(db, 'DataBuyer'),{
+        order
+    }).then((doc)=> {alert(`Compra exitosa!
+    El ID de su pedido es: ${doc.id}`)})
 
   // Crea objeto para guardar Datos Cliente e Items comprados
-  const items = {}
-  items.clientData = {name: 'Nombre Cliente',
-                      lastName: 'Apellido',
-                      email: 'nombre@gmail.com',
-                      address: 'address1',
-                      }
-  items.cart = cart.map(item => item)
+  // const items = {}
+  // items.clientData = {name: 'Nombre Cliente',
+  //                     lastName: 'Apellido',
+  //                     email: 'nombre@gmail.com',
+  //                     address: 'address1',
+  //                     }
+  // items.cart = cart.map(item => item)
 
 
 
-  addDoc(collection(db, 'DataBuyer'),{
-    items
-  })
+  // addDoc(collection(db, 'DataBuyer'),{
+  //   items
+  // })
 
-  alert('Compra Exitosa')
+  // alert('Compra Exitosa')
 
 
 }
