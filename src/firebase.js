@@ -15,12 +15,12 @@ import {
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyAOmDpttHaNWtHdV1efNCaCm1KLrHxZs3A",
-  authDomain: "gabu-deli-proyectoreactcoder.firebaseapp.com",
-  projectId: "gabu-deli-proyectoreactcoder",
-  storageBucket: "gabu-deli-proyectoreactcoder.appspot.com",
-  messagingSenderId: "126107637041",
-  appId: "1:126107637041:web:34345c2eec649d530bcc10"
+  apiKey: "AIzaSyDa_xyzTz1rLABm4wbK5i93UX3DWt3DXRw",
+  authDomain: "gabu-deli.firebaseapp.com",
+  projectId: "gabu-deli",
+  storageBucket: "gabu-deli.appspot.com",
+  messagingSenderId: "333966301507",
+  appId: "1:333966301507:web:11c3b7f2bab2e5e0e677f6"
 };
 
 export const setInfo = () => {
@@ -107,10 +107,13 @@ export const setBuy = (order) => {
 
   
 
+
 /**   
 
- LLENAR LA BASE DE DATOS
-  setInfo()
+  
+
+ // LLENAR LA BASE DE DATOS
+ // setInfo()
   
 
 */

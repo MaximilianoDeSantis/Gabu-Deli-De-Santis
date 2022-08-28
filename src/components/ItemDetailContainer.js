@@ -20,11 +20,11 @@ const ItemDetailContainer = () => {
 
   useEffect(() => {
     getDetailItem(itemSelected).then((snap) => {
-      console.log('snap.id')
-      console.log(snap)
+
       setItem(snap.data());
-      console.log('snap.data()')
-      console.log(snap.data())
+
+      setItem(snap.data());
+
     })
     
     setTimeout(() => {

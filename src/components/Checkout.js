@@ -20,8 +20,6 @@ export const Checkout = () => {
         });
     }
 
-    console.log('Total price')
-    console.log(totalPrice())
 
     const setOrder = (e) => {
         e.preventDefault()
